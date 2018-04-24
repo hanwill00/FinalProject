@@ -1,0 +1,27 @@
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <%= render 'itineraries/form', itinerary: @itinerary %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <% if @itineraries.blank? %>
+        <p class="text-center">Create a new itinerary!</p>
+      <% else %>
+        <% @itineraries.each do |itinerary| %>
+          <%= render 'itineraries/itinerary', itinerary: itinerary %>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h1>Welcome to Wanderlist</h1>
+      <p>Sign up or log in to get started!</p>
+    </div>
+  </div>
+<% end %>

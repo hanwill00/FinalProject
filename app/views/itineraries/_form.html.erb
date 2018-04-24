@@ -12,11 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :itinerary_user_id %>
+    <%= form.label :itinerary_name %>
+    <%= form.text_field :name, id: :itinerary_name, class: 'form-control' %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
+
   </div>
 <% end %>

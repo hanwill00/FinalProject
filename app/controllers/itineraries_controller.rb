@@ -1,30 +1,22 @@
 class ItinerariesController < ApplicationController
   before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
 
-  # GET /itineraries
-  # GET /itineraries.json
   def index
     @itineraries = Itinerary.all
   end
 
-  # GET /itineraries/1
-  # GET /itineraries/1.json
   def show
   end
 
-  # GET /itineraries/new
   def new
     @itinerary = Itinerary.new
   end
 
-  # GET /itineraries/1/edit
   def edit
   end
 
-  # POST /itineraries
-  # POST /itineraries.json
   def create
-    @itinerary = Itinerary.new(itinerary_params)
+    @itinerary = current_user.itineraries.new(itinerary_params)
 
     respond_to do |format|
       if @itinerary.save
@@ -37,8 +29,6 @@ class ItinerariesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /itineraries/1
-  # PATCH/PUT /itineraries/1.json
   def update
     respond_to do |format|
       if @itinerary.update(itinerary_params)
@@ -51,8 +41,6 @@ class ItinerariesController < ApplicationController
     end
   end
 
-  # DELETE /itineraries/1
-  # DELETE /itineraries/1.json
   def destroy
     @itinerary.destroy
     respond_to do |format|
@@ -69,6 +57,6 @@ class ItinerariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def itinerary_params
-      params.require(:itinerary).permit(:user_id)
+      params.require(:itinerary).permit(:name)
     end
 end

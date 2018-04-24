@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = @itinerary.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -69,6 +69,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:itinerary_id, :location, :journal_entry, :time_start, :time_end)
+      params.require(:event).permit(:name, :itinerary_id, :location, :journal_entry, :time_start, :time_end)
     end
 end

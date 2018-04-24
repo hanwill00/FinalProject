@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @itinerary.user %>
+  <strong><%= @itinerary.name %>
+  </strong>
 </p>
+
+<p>
+  <% @itinerary.events do |event| %>
+    <%= event.name %>
+    <%= link_to 'Edit', edit_itinerary_event %> |
+    <%= link_to 'Show', itinerary_event %>
+  <%
+   end %>
+</p>
+
+<%= render 'form', event: @event %>
 
 <%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
 <%= link_to 'Back', itineraries_path %>
