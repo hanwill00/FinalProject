@@ -6,6 +6,8 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+    @event = Event.new
+    @events = @itinerary.events
   end
 
   def new
@@ -20,7 +22,7 @@ class ItinerariesController < ApplicationController
 
     respond_to do |format|
       if @itinerary.save
-        format.html { redirect_to @itinerary, notice: 'Itinerary was successfully created.' }
+        format.html { redirect_to @itinerary }
         format.json { render :show, status: :created, location: @itinerary }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class ItinerariesController < ApplicationController
   def destroy
     @itinerary.destroy
     respond_to do |format|
-      format.html { redirect_to itineraries_url, notice: 'Itinerary was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Itinerary was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

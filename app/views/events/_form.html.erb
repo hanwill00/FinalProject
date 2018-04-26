@@ -12,28 +12,28 @@
   <% end %>
 
     <div class="field">
-      <%= event_form.label :event_name %>
-      <%= event_form.text_field :name, class: 'form-control' %>
+      <%= form.label :event_name %>
+      <%= form.text_field :name, class: 'form-control' %>
     </div>
 
     <div class="field">
-      <%= event_form.label :location %>
-      <%= event_form.text_field :location, id: :event_location %>
+      <%= form.label :location %>
+      <%= form.text_field :location, id: :event_location %>
     </div>
 
     <div class="field">
-      <%= event_form.label :journal_entry %>
-      <%= event_form.text_area :journal_entry, id: :event_journal_entry %>
+      <%= form.label :journal_entry %>
+      <%= form.text_area :journal_entry, id: :event_journal_entry %>
     </div>
 
     <div class="field">
-      <%= event_form.label :time_start %>
-      <%= event_form.datetime_select :time_start, id: :event_time_start %>
+      <%= form.label :time_start %>
+      <%= form.datetime_select :time_start, id: :event_time_start %>
     </div>
 
     <div class="field">
-      <%= event_form.label :time_end %>
-      <%= event_form.datetime_select :time_end, id: :event_time_end %>
+      <%= form.label :time_end %>
+      <%= form.datetime_select :time_end, id: :event_time_end %>
     </div>
 
   <div class="actions">

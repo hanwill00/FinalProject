@@ -3,9 +3,10 @@ class User < ApplicationRecord
   include BCrypt
 
   validate :first_name_cap, :last_name_cap, :email_at
-  has_many :itineraries
-  has_many :followers, through: :user_followings
-  has_many :followees, through: :user_followings
+  has_many :itineraries, dependent: :destroy
+  has_many :user_following, dependent: :destroy
+  has_many :followers, through: :user_following
+  has_many :followees, through: :user_following
   has_many :iterinary_followings
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -25,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def follow(followee)
-    return if User_following.exists?(user: self, followee: followee) || Friendship.exists?(user: followee, followee: self)
+    return if User_following.exists?(user: self, followee: followee) || User_following.exists?(user: followee, followee: self)
     User_following.create(user: self, followee: followee)
     User_following.create(user: followee, followee: self)
   end

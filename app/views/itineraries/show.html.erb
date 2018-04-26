@@ -1,20 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= @itinerary.name %>
-  </strong>
+  <h1><%= @itinerary.name %>
+  </h1>
 </p>
 
-<p>
-  <% @itinerary.events do |event| %>
-    <%= event.name %>
-    <%= link_to 'Edit', edit_itinerary_event %> |
-    <%= link_to 'Show', itinerary_event %>
-  <%
-   end %>
-</p>
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <% @events.each do |event| %>
+      <%= render 'events/event', event: event %>
+      <br>
+    <% end %>
+  </div>
 
-<%= render 'form', event: @event %>
+  <div class="col-lg-6 offset-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <span class="card-title">
+          <strong>Add an event!</strong>
+        </span>
+        <%= render 'events/form', itinerary: @itinerary, event: @event %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
-<%= link_to 'Back', itineraries_path %>
+</div>
+
+<div class="col-lg-6 offset-lg-3">
+  <%= link_to 'Back', root_path %>
+</div>

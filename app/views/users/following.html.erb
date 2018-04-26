@@ -7,13 +7,13 @@
   </thead>
 
   <tbody>
-    <% if current_user.pending_friends.empty? %>
-      <td>No friend requests.</td>
+    <% if current_user.followees.empty? %>
+      <td>You are not following anyone!.</td>
     <% else %>
-      <% current_user.followees.each do |friend| %>
+      <% current_user.followees.each do |followee| %>
         <tr>
-          <td><%= link_to friend.full_name, friend %></td>
-          <td><%= link_to 'Unfollow', delete_friend_user_path(friend), method: :delete %></td>
+          <td><%= link_to followee.full_name, followee %></td>
+          <td><%= link_to 'Unfollow', unfollow_user_path(followee), method: :delete %></td>
         </tr>
       <% end %>
   <% end %>
@@ -27,13 +27,13 @@
     </tr>
   </thead>
   <tbody>
-    <% if current_user.requested_friends.empty? %>
-      <td>No sent friend requests.</td>
+    <% if current_user.followers.empty? %>
+      <td>No followers.</td>
     <% else %>
-      <% current_user.requested_friends.each do |friend| %>
+      <% current_user.followers.each do |follower| %>
         <tr>
-          <td><%= link_to friend.full_name, friend %></td>
-          <td><%= link_to 'Cancel Friend Request', delete_friend_user_path(friend), method: :delete %></td>
+          <td><%= link_to follower.full_name, follower %></td>
+          <td><%= link_to 'Follow', follow_user_path(follower) %></td>
           <td></td>
         </tr>
       <% end %>

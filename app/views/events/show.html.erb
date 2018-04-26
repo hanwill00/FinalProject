@@ -1,29 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Itinerary:</strong>
-  <%= @event.itinerary %>
-</p>
+<div class="card">
+  <div class="card-body">
+    <span class="card-title">
+      <strong><%= link_to @event.name, @event.name %></strong>
+    </span>
+    <br>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+    <p>
+      <strong>Location:</strong>
+      <%= @event.location %>
+    </p>
 
-<p>
-  <strong>Journal entry:</strong>
-  <%= @event.journal_entry %>
-</p>
+    <p>
+      <strong>Journal entry:</strong>
+      <%= @event.journal_entry %>
+    </p>
 
-<p>
-  <strong>Time start:</strong>
-  <%= @event.time_start %>
-</p>
+    <p>
+      <strong>Time start:</strong>
+      <%= @event.time_start %>
+    </p>
 
-<p>
-  <strong>Time end:</strong>
-  <%= @event.time_end %>
-</p>
+    <p>
+      <strong>Time end:</strong>
+      <%= @event.time_end %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+
+<%= link_to 'Edit', edit_itinerary_event_path(@itinerary, @event) %> |
+<%= link_to 'Back', @itinerary %>

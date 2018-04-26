@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
+  before_action :set_itinerary
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = @itinerary.events
   end
 
   # GET /events/1
@@ -28,7 +29,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to [@itinerary, @event], notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -65,6 +66,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_itinerary
+      @itinerary = Itinerary.find(params[:itinerary_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

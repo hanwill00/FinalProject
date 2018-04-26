@@ -7,36 +7,16 @@
   </thead>
 
   <tbody>
-    <% if current_user.pending_friends.empty? %>
-      <td>No friend requests.</td>
-    <% else %>
-      <% current_user.pending_friends.each do |friend| %>
-        <tr>
-          <td><%= link_to friend.full_name, friend %></td>
-          <td><%= link_to 'Accept Friend Request', accept_friend_request_user_path(friend), method: :patch %></td>
-          <td><%= link_to 'Decline Friend Request', delete_friend_user_path(friend), method: :delete %></td>
-        </tr>
+    <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <% if @itineraries.blank? %>
+        <p class="text-center">Create a new itinerary!</p>
+      <% else %>
+        <% @itineraries.each do |itinerary| %>
+          <%= render 'itineraries/itinerary', itinerary: itinerary %>
+          <br>
+        <% end %>
       <% end %>
-  <% end %>
-</table>
-
-<table class="table table-light">
-  <thead>
-    <tr>
-      <th class="table-dark bg-primary">Sent Friend Requests</th>
-      <th class="table-dark bg-primary" colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if current_user.requested_friends.empty? %>
-      <td>No sent friend requests.</td>
-    <% else %>
-      <% current_user.requested_friends.each do |friend| %>
-        <tr>
-          <td><%= link_to friend.full_name, friend %></td>
-          <td><%= link_to 'Cancel Friend Request', delete_friend_user_path(friend), method: :delete %></td>
-          <td></td>
-        </tr>
-      <% end %>
-  <% end %>
+    </div>
+  </div>
 </table>
