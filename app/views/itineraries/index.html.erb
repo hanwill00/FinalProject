@@ -1,27 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Itineraries</h1>
-
-<table>
+<table class="table table-light">
   <thead>
     <tr>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th class="table-dark bg-primary">Itineraries</th>
+      <th class="table-dark bg-primary" colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @itineraries.each do |itinerary| %>
-      <tr>
-        <td><%= itinerary.user %></td>
-        <td><%= link_to 'Show', itinerary %></td>
-        <td><%= link_to 'Edit', edit_itinerary_path(itinerary) %></td>
-        <td><%= link_to 'Destroy', itinerary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <% if @itineraries.blank? %>
+        <p class="text-center">Create a new itinerary!</p>
+      <% else %>
+        <% @itineraries.each do |itinerary| %>
+          <%= render 'itineraries/itinerary', itinerary: itinerary %>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </table>
-
-<br>
-
-<%= link_to 'New Itinerary', new_itinerary_path %>

@@ -22,9 +22,9 @@
         <td><%= event.journal_entry %></td>
         <td><%= event.time_start %></td>
         <td><%= event.time_end %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', itinerary_event_path(@itinerary, event) %></td>
+        <td><%= link_to 'Edit', edit_itinerary_event_path(@itinerary, event) %></td>
+        <td><%= link_to 'Destroy', itinerary_event_path(@itinerary, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_itinerary_event_path %>

@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <span class="card-title">
-      <strong><%= link_to event.name, itinerary_event_path(@itinerary,event) %></strong>
+      <strong><%= link_to event.name, itinerary_event_path(@itinerary, event) %></strong>
     </span>
     <br>
 
@@ -25,6 +25,6 @@
       <%= event.time_end %>
     </p>
 
-    <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', itinerary_event_path(@itinerary, event), method: :delete %>
   </div>
 </div>

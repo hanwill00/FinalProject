@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def password
-    @password ||= Password.new(password_hash) if password_hash
+    @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
@@ -26,9 +26,9 @@ class User < ApplicationRecord
   end
 
   def follow(followee)
-    return if User_following.exists?(user: self, followee: followee) || User_following.exists?(user: followee, followee: self)
-    User_following.create(user: self, followee: followee)
-    User_following.create(user: followee, followee: self)
+    return if UserFollowing.exists?(user: self, followee: followee) || UserFollowing.exists?(user: followee, followee: self)
+    UserFollowing.create(user: self, followee: followee)
+    UserFollowing.create(user: followee, followee: self)
   end
 
   def unfollow(followee)
